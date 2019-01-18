@@ -1,0 +1,45 @@
+<main class="content">
+	<div class="container-fluid p-0">
+
+		<h1 class="h3 mb-3">Items</h1>
+
+		<div class="row">
+			<div class="col-12">
+
+				<div class="card">
+					<div class="table-responsive">
+						<table class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>Nom</th>
+									<th>Prix de départ</th>
+									<th>Pourcentage de remise</th>
+									<th>Prix</th>
+									<th>Catégorie</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<% @items.each do |item| %>
+									<%= render partial: "administration/items/table_row", locals: { item: item } %>
+								<% end %>
+								<%= form_for :item, :url => administration_items_path do |form| %>
+									<tr>
+										<td><%= form.select :name, options_for_select([["1-Up Mushroom", "1-Up Mushroom"], ["Super Mushroom", "Super Mushroom"], ["Propeller Mushroom", "Propeller Mushroom"], ["Mini Mushroom", "Mini Mushroom"], ["Mega Mushroom", "Mega Mushroom"], ["Fire Flower", "Fire Flower"], ["Ice Flower", "Ice Flower"], ["Super Star", "Super Star"], ["Penguin Suit", "Penguin Suit"]]) %></td>
+										<td><%= form.text_field :original_price, :class => "form-control" %></td>
+										<td></td>
+										<td></td>
+										<td class="form-group"><%= form.select :category_id, options_for_select([["Mushroom", 1], ["Flower", 2], ["Other", 3]]) %></td>
+										<td><%= form.submit "Créer", :class => "btn btn-success" %></td>
+									</tr>
+								<% end %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</main>

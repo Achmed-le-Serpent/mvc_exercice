@@ -1,0 +1,10 @@
+<%= form_for item, :url => administration_item_path(item.id) do |form| %>
+	<tr>
+		<td><%= item.name %></td>
+		<td><%= item.original_price %></td>
+		<td><%= form.text_field :discount_percentage, :value => item.discount_percentage, :class => "form-control" %></td>
+		<td><%= item.price %></td>
+		<td><%= item.category.name %></td>
+		<td><%= form.submit "Modifier", :class => "btn btn-secondary" %></td>
+	</tr>
+<% end %>
