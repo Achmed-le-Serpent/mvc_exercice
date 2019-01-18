@@ -12,4 +12,7 @@ Rails.application.routes.draw do
 
     resources :items
   end
+
+  resources :users, only: [:show]
+  resources :admins, only: [:show]
 end
